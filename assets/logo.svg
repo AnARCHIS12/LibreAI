@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Libre AI logo">
+  <rect width="256" height="256" rx="56" fill="#15151B"/>
+  <circle cx="184" cy="54" r="78" fill="#16C7C7" opacity="0.34"/>
+  <path d="M42 173c43-17 105-17 172 0-15 38-48 60-86 60s-71-22-86-60z" fill="#FF5A3D"/>
+  <path d="M58 141 77 58l40 41h23l40-41 18 83c-5 49-33 73-70 73s-65-24-70-73z" fill="#FFF7E6"/>
+  <circle cx="95" cy="124" r="9" fill="#15151B"/>
+  <circle cx="160" cy="124" r="9" fill="#15151B"/>
+  <path d="M88 151h80" stroke="#FF5A3D" stroke-width="14" stroke-linecap="round"/>
+  <path d="M102 181h52" stroke="#F7B733" stroke-width="14" stroke-linecap="round"/>
+</svg>
