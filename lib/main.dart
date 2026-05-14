@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -61,10 +62,19 @@ const _translations = {
     'memoryPanel': 'Memoire',
     'toolbox': 'Outils',
     'imageToolDesc': 'Creer une image depuis un prompt.',
+    'webSearchToolDesc':
+        'Chercher sur le web et afficher les sources utilisees.',
     'ocrToolDesc': 'Extraire le texte de PDF, images et documents.',
     'audioToolDesc': 'Transcrire un fichier audio avec Voxtral.',
     'localActions': 'Actions locales',
     'clearLocalData': 'Effacer donnees locales',
+    'deleteChat': 'Supprimer le chat',
+    'deleteChatTitle': 'Supprimer cette conversation ?',
+    'deleteChatConfirm':
+        'Cette conversation sera retiree de l historique local.',
+    'delete': 'Supprimer',
+    'cancel': 'Annuler',
+    'chatDeleted': 'Conversation supprimee.',
     'missingApiKey': 'Cle API Mistral manquante.',
     'localKey': 'Cle locale',
     'missingKeyShort': 'Cle absente',
@@ -90,7 +100,12 @@ const _translations = {
     'generateImage': 'Generer une image',
     'generateImageShort': 'Generer image',
     'imagePrompt': 'Prompt image',
+    'webSearch': 'Recherche web',
+    'webSearchShort': 'Recherche web',
+    'webSearchQuery': 'Question a rechercher',
+    'sources': 'Sources',
     'generate': 'Generer',
+    'search': 'Rechercher',
     'tools': 'Outils',
     'ocrFile': 'OCR PDF / fichier',
     'transcribeAudio': 'Transcrire audio',
@@ -100,6 +115,11 @@ const _translations = {
     'noTextExtracted': 'Aucun texte extrait.',
     'noTranscription': 'Aucune transcription recue.',
     'noMessages': 'Aucun message',
+    'copyResponse': 'Copier la reponse',
+    'responseCopied': 'Reponse copiee.',
+    'downloadImage': 'Telecharger image',
+    'imageDownloaded': 'Image enregistree.',
+    'imageDownloadFailed': 'Telechargement image impossible.',
   },
   'en': {
     'tagline': 'private assistant',
@@ -116,10 +136,18 @@ const _translations = {
     'memoryPanel': 'Memory',
     'toolbox': 'Tools',
     'imageToolDesc': 'Create an image from a prompt.',
+    'webSearchToolDesc': 'Search the web and show the sources used.',
     'ocrToolDesc': 'Extract text from PDFs, images, and documents.',
     'audioToolDesc': 'Transcribe an audio file with Voxtral.',
     'localActions': 'Local actions',
     'clearLocalData': 'Clear local data',
+    'deleteChat': 'Delete chat',
+    'deleteChatTitle': 'Delete this conversation?',
+    'deleteChatConfirm':
+        'This conversation will be removed from local history.',
+    'delete': 'Delete',
+    'cancel': 'Cancel',
+    'chatDeleted': 'Chat deleted.',
     'missingApiKey': 'Mistral API key missing.',
     'localKey': 'Local key',
     'missingKeyShort': 'No key',
@@ -145,7 +173,12 @@ const _translations = {
     'generateImage': 'Generate an image',
     'generateImageShort': 'Generate image',
     'imagePrompt': 'Image prompt',
+    'webSearch': 'Web search',
+    'webSearchShort': 'Web search',
+    'webSearchQuery': 'Question to search',
+    'sources': 'Sources',
     'generate': 'Generate',
+    'search': 'Search',
     'tools': 'Tools',
     'ocrFile': 'OCR PDF / file',
     'transcribeAudio': 'Transcribe audio',
@@ -155,6 +188,11 @@ const _translations = {
     'noTextExtracted': 'No text extracted.',
     'noTranscription': 'No transcription received.',
     'noMessages': 'No messages',
+    'copyResponse': 'Copy response',
+    'responseCopied': 'Response copied.',
+    'downloadImage': 'Download image',
+    'imageDownloaded': 'Image saved.',
+    'imageDownloadFailed': 'Could not download image.',
   },
   'es': {
     'tagline': 'asistente privado',
@@ -171,10 +209,18 @@ const _translations = {
     'memoryPanel': 'Memoria',
     'toolbox': 'Herramientas',
     'imageToolDesc': 'Crear una imagen desde un prompt.',
+    'webSearchToolDesc': 'Buscar en la web y mostrar las fuentes usadas.',
     'ocrToolDesc': 'Extraer texto de PDF, imagenes y documentos.',
     'audioToolDesc': 'Transcribir un archivo de audio con Voxtral.',
     'localActions': 'Acciones locales',
     'clearLocalData': 'Borrar datos locales',
+    'deleteChat': 'Eliminar chat',
+    'deleteChatTitle': 'Eliminar esta conversacion?',
+    'deleteChatConfirm':
+        'Esta conversacion se eliminara del historial local.',
+    'delete': 'Eliminar',
+    'cancel': 'Cancelar',
+    'chatDeleted': 'Conversacion eliminada.',
     'missingApiKey': 'Falta la clave API de Mistral.',
     'localKey': 'Clave local',
     'missingKeyShort': 'Sin clave',
@@ -200,7 +246,12 @@ const _translations = {
     'generateImage': 'Generar una imagen',
     'generateImageShort': 'Generar imagen',
     'imagePrompt': 'Prompt de imagen',
+    'webSearch': 'Busqueda web',
+    'webSearchShort': 'Busqueda web',
+    'webSearchQuery': 'Pregunta a buscar',
+    'sources': 'Fuentes',
     'generate': 'Generar',
+    'search': 'Buscar',
     'tools': 'Herramientas',
     'ocrFile': 'OCR PDF / archivo',
     'transcribeAudio': 'Transcribir audio',
@@ -210,6 +261,11 @@ const _translations = {
     'noTextExtracted': 'No se extrajo texto.',
     'noTranscription': 'No se recibio transcripcion.',
     'noMessages': 'Sin mensajes',
+    'copyResponse': 'Copiar respuesta',
+    'responseCopied': 'Respuesta copiada.',
+    'downloadImage': 'Descargar imagen',
+    'imageDownloaded': 'Imagen guardada.',
+    'imageDownloadFailed': 'No se pudo descargar la imagen.',
   },
   'ar': {
     'tagline': 'مساعد خاص',
@@ -226,10 +282,17 @@ const _translations = {
     'memoryPanel': 'الذاكرة',
     'toolbox': 'الأدوات',
     'imageToolDesc': 'إنشاء صورة من وصف.',
+    'webSearchToolDesc': 'البحث في الويب وعرض المصادر المستخدمة.',
     'ocrToolDesc': 'استخراج النص من PDF والصور والمستندات.',
     'audioToolDesc': 'تفريغ ملف صوتي باستخدام Voxtral.',
     'localActions': 'إجراءات محلية',
     'clearLocalData': 'مسح البيانات المحلية',
+    'deleteChat': 'حذف المحادثة',
+    'deleteChatTitle': 'حذف هذه المحادثة؟',
+    'deleteChatConfirm': 'ستتم إزالة هذه المحادثة من السجل المحلي.',
+    'delete': 'حذف',
+    'cancel': 'إلغاء',
+    'chatDeleted': 'تم حذف المحادثة.',
     'missingApiKey': 'مفتاح Mistral API مفقود.',
     'localKey': 'مفتاح محلي',
     'missingKeyShort': 'لا يوجد مفتاح',
@@ -254,7 +317,12 @@ const _translations = {
     'generateImage': 'إنشاء صورة',
     'generateImageShort': 'إنشاء صورة',
     'imagePrompt': 'وصف الصورة',
+    'webSearch': 'بحث الويب',
+    'webSearchShort': 'بحث الويب',
+    'webSearchQuery': 'السؤال المراد البحث عنه',
+    'sources': 'المصادر',
     'generate': 'إنشاء',
+    'search': 'بحث',
     'tools': 'الأدوات',
     'ocrFile': 'OCR PDF / ملف',
     'transcribeAudio': 'تفريغ الصوت',
@@ -264,6 +332,11 @@ const _translations = {
     'noTextExtracted': 'لم يتم استخراج نص.',
     'noTranscription': 'لم يصل أي تفريغ.',
     'noMessages': 'لا توجد رسائل',
+    'copyResponse': 'نسخ الرد',
+    'responseCopied': 'تم نسخ الرد.',
+    'downloadImage': 'تنزيل الصورة',
+    'imageDownloaded': 'تم حفظ الصورة.',
+    'imageDownloadFailed': 'تعذر تنزيل الصورة.',
   },
 };
 
@@ -382,6 +455,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _controller = TextEditingController();
   final _scrollController = ScrollController();
   final _imagePromptController = TextEditingController();
+  final _webSearchPromptController = TextEditingController();
   final _speech = stt.SpeechToText();
   String _apiKey = _mistralApiKey;
   String _model = _mistralModel;
@@ -410,6 +484,7 @@ class _ChatScreenState extends State<ChatScreen> {
     _controller.dispose();
     _speech.stop();
     _imagePromptController.dispose();
+    _webSearchPromptController.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -620,6 +695,8 @@ class _ChatScreenState extends State<ChatScreen> {
     switch (action) {
       case _ToolAction.image:
         await _generateImage();
+      case _ToolAction.webSearch:
+        await _runWebSearch();
       case _ToolAction.ocr:
         await _runOcr();
       case _ToolAction.audio:
@@ -656,6 +733,41 @@ class _ChatScreenState extends State<ChatScreen> {
             role: ChatRole.assistant,
             content: result.text.isEmpty ? 'Image generee.' : result.text,
             imagePath: imagePath,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _runWebSearch() async {
+    final query = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      builder: (context) => _WebSearchPromptSheet(
+        controller: _webSearchPromptController,
+        languageCode: _languageCode,
+      ),
+    );
+
+    if (query == null || query.trim().isEmpty || !mounted) {
+      return;
+    }
+
+    await _withToolProgress(
+      userMessage: '${_t('webSearch')}: $query',
+      task: () async {
+        final result = await widget.client.webSearch(
+          apiKey: _apiKey,
+          model: _model,
+          query: query,
+          languageCode: _languageCode,
+        );
+        _messages.add(
+          ChatMessage(
+            role: ChatRole.assistant,
+            content: result.text,
+            sources: result.sources,
           ),
         );
       },
@@ -772,6 +884,59 @@ class _ChatScreenState extends State<ChatScreen> {
     return file.path;
   }
 
+  Future<void> _copyAssistantResponse(ChatMessage message) async {
+    final content = message.content.trim();
+    if (content.isEmpty) {
+      return;
+    }
+
+    await Clipboard.setData(ClipboardData(text: content));
+    if (!mounted) {
+      return;
+    }
+    _showSnackBar(_t('responseCopied'));
+  }
+
+  Future<void> _downloadGeneratedImage(ChatMessage message) async {
+    final imagePath = message.imagePath;
+    if (imagePath == null) {
+      return;
+    }
+
+    try {
+      final imageFile = File(imagePath);
+      if (!await imageFile.exists()) {
+        throw const FileSystemException('Image file missing');
+      }
+
+      final bytes = await imageFile.readAsBytes();
+      final fileName = imagePath.split(Platform.pathSeparator).last;
+      final savedPath = await FilePicker.saveFile(
+        dialogTitle: _t('downloadImage'),
+        fileName: fileName.isEmpty ? 'libre_ai_image.png' : fileName,
+        type: FileType.custom,
+        allowedExtensions: const ['png'],
+        bytes: bytes,
+      );
+
+      if (!mounted || savedPath == null) {
+        return;
+      }
+      _showSnackBar(_t('imageDownloaded'));
+    } catch (_) {
+      if (!mounted) {
+        return;
+      }
+      _showSnackBar(_t('imageDownloadFailed'));
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(message)));
+  }
+
   Future<void> _newConversation() async {
     final conversation = ChatConversation(
       id: _newConversationId(),
@@ -795,6 +960,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _openHistory() async {
+    const deletePrefix = '__delete__:';
     final selectedId = await showModalBottomSheet<String>(
       context: context,
       useSafeArea: true,
@@ -815,6 +981,11 @@ class _ChatScreenState extends State<ChatScreen> {
       return;
     }
 
+    if (selectedId.startsWith(deletePrefix)) {
+      await _deleteConversation(selectedId.substring(deletePrefix.length));
+      return;
+    }
+
     final conversation = _conversations.firstWhere(
       (conversation) => conversation.id == selectedId,
       orElse: () => _conversations.first,
@@ -830,6 +1001,91 @@ class _ChatScreenState extends State<ChatScreen> {
     await widget.storage.saveCurrentConversationId(conversation.id);
     await widget.storage.saveMessages(_messages);
     _scrollToBottom();
+  }
+
+  Future<void> _deleteConversation(String conversationId) async {
+    if (_isBusy) {
+      return;
+    }
+
+    final index = _conversations.indexWhere(
+      (conversation) => conversation.id == conversationId,
+    );
+    if (index == -1) {
+      return;
+    }
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(_t('deleteChatTitle')),
+        content: Text(_t('deleteChatConfirm')),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text(_t('cancel')),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            style: FilledButton.styleFrom(backgroundColor: _coral),
+            child: Text(_t('delete')),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed != true || !mounted) {
+      return;
+    }
+
+    final remaining = _conversations
+        .where((conversation) => conversation.id != conversationId)
+        .toList()
+      ..sort((a, b) => b.updatedAt.compareTo(a.updatedAt));
+
+    final deletedCurrent = conversationId == _currentConversationId;
+    late final List<ChatConversation> conversations;
+    late final String currentConversationId;
+    late final List<ChatMessage> messages;
+
+    if (remaining.isEmpty) {
+      final emptyConversation = ChatConversation(
+        id: _newConversationId(),
+        title: _t('newConversation'),
+        updatedAt: DateTime.now(),
+        messages: const [],
+      );
+      conversations = [emptyConversation];
+      currentConversationId = emptyConversation.id;
+      messages = const [];
+    } else if (deletedCurrent) {
+      final nextConversation = remaining.first;
+      conversations = remaining;
+      currentConversationId = nextConversation.id;
+      messages = nextConversation.messages;
+    } else {
+      conversations = remaining;
+      currentConversationId = _currentConversationId;
+      messages = List.of(_messages);
+    }
+
+    setState(() {
+      _conversations = conversations;
+      _currentConversationId = currentConversationId;
+      if (deletedCurrent || remaining.isEmpty) {
+        _messages
+          ..clear()
+          ..addAll(messages);
+      }
+      _error = null;
+    });
+
+    await widget.storage.saveConversations(conversations);
+    await widget.storage.saveCurrentConversationId(currentConversationId);
+    await widget.storage.saveMessages(_messages);
+    if (mounted) {
+      _showSnackBar(_t('chatDeleted'));
+    }
   }
 
   Future<void> _openSettings() async {
@@ -1082,6 +1338,8 @@ class _ChatScreenState extends State<ChatScreen> {
           messages: _messages,
           isBusy: _isBusy,
           scrollController: _scrollController,
+          onCopyResponse: _copyAssistantResponse,
+          onDownloadImage: _downloadGeneratedImage,
           composer: _MessageComposer(
             controller: _controller,
             enabled: _hasApiKey && !_isBusy && !_isLoadingLocalData,
@@ -1101,6 +1359,7 @@ class _ChatScreenState extends State<ChatScreen> {
           localMemory: _localMemory,
           languageCode: _languageCode,
           onNewConversation: _newConversation,
+          onDeleteConversation: _deleteConversation,
           onOpenConversation: (id) async {
             final conversation = _conversations.firstWhere(
               (conversation) => conversation.id == id,
@@ -1355,6 +1614,8 @@ class _ChatPage extends StatelessWidget {
     required this.messages,
     required this.isBusy,
     required this.scrollController,
+    required this.onCopyResponse,
+    required this.onDownloadImage,
     required this.composer,
     required this.languageCode,
   });
@@ -1367,6 +1628,8 @@ class _ChatPage extends StatelessWidget {
   final List<ChatMessage> messages;
   final bool isBusy;
   final ScrollController scrollController;
+  final ValueChanged<ChatMessage> onCopyResponse;
+  final ValueChanged<ChatMessage> onDownloadImage;
   final Widget composer;
   final String languageCode;
 
@@ -1397,7 +1660,12 @@ class _ChatPage extends StatelessWidget {
               if (index == messages.length) {
                 return const _TypingBubble();
               }
-              return _MessageBubble(message: messages[index]);
+              return _MessageBubble(
+                message: messages[index],
+                languageCode: languageCode,
+                onCopyResponse: onCopyResponse,
+                onDownloadImage: onDownloadImage,
+              );
             },
           ),
         ),
@@ -1414,6 +1682,7 @@ class _LibraryPage extends StatelessWidget {
     required this.localMemory,
     required this.languageCode,
     required this.onNewConversation,
+    required this.onDeleteConversation,
     required this.onOpenConversation,
   });
 
@@ -1422,6 +1691,7 @@ class _LibraryPage extends StatelessWidget {
   final String localMemory;
   final String languageCode;
   final VoidCallback onNewConversation;
+  final ValueChanged<String> onDeleteConversation;
   final ValueChanged<String> onOpenConversation;
 
   @override
@@ -1436,8 +1706,19 @@ class _LibraryPage extends StatelessWidget {
           title: t(languageCode, 'library'),
           action: FilledButton.icon(
             onPressed: onNewConversation,
-            icon: const Icon(Icons.add_comment_outlined),
-            label: Text(t(languageCode, 'newConversation')),
+            icon: const Icon(Icons.add_comment_outlined, size: 18),
+            label: Text(
+              t(languageCode, 'newConversation'),
+              overflow: TextOverflow.ellipsis,
+            ),
+            style: FilledButton.styleFrom(
+              minimumSize: const Size(0, 36),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              textStyle: Theme.of(
+                context,
+              ).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.w800),
+            ),
           ),
         ),
         const SizedBox(height: 12),
@@ -1477,6 +1758,8 @@ class _LibraryPage extends StatelessWidget {
               icon: Icons.chat_bubble_outline,
               isSelected: conversation.id == currentConversationId,
               onTap: () => onOpenConversation(conversation.id),
+              onDelete: () => onDeleteConversation(conversation.id),
+              deleteTooltip: t(languageCode, 'deleteChat'),
             ),
           ),
         ),
@@ -1509,6 +1792,13 @@ class _ToolsPage extends StatelessWidget {
           description: t(languageCode, 'imageToolDesc'),
           enabled: enabled,
           onTap: () => onToolSelected(_ToolAction.image),
+        ),
+        _ToolCard(
+          icon: Icons.public_rounded,
+          title: t(languageCode, 'webSearchShort'),
+          description: t(languageCode, 'webSearchToolDesc'),
+          enabled: enabled,
+          onTap: () => onToolSelected(_ToolAction.webSearch),
         ),
         _ToolCard(
           icon: Icons.description_outlined,
@@ -1782,6 +2072,10 @@ class _HistorySheet extends StatelessWidget {
                   icon: Icons.chat_bubble_outline,
                   isSelected: conversation.id == currentConversationId,
                   onTap: () => Navigator.of(context).pop(conversation.id),
+                  onDelete: () => Navigator.of(
+                    context,
+                  ).pop('__delete__:${conversation.id}'),
+                  deleteTooltip: t(languageCode, 'deleteChat'),
                 );
               },
             ),
@@ -1799,6 +2093,8 @@ class _HistoryTile extends StatelessWidget {
     required this.icon,
     required this.isSelected,
     required this.onTap,
+    this.onDelete,
+    this.deleteTooltip,
   });
 
   final String title;
@@ -1806,6 +2102,8 @@ class _HistoryTile extends StatelessWidget {
   final IconData icon;
   final bool isSelected;
   final VoidCallback onTap;
+  final VoidCallback? onDelete;
+  final String? deleteTooltip;
 
   @override
   Widget build(BuildContext context) {
@@ -1821,9 +2119,26 @@ class _HistoryTile extends StatelessWidget {
         style: const TextStyle(fontWeight: FontWeight.w800),
       ),
       subtitle: Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis),
-      trailing: isSelected
-          ? const Icon(Icons.check_circle, color: _coral)
-          : null,
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (onDelete != null)
+            Tooltip(
+              message: deleteTooltip ?? '',
+              child: IconButton(
+                onPressed: onDelete,
+                icon: const Icon(Icons.delete_outline_rounded, size: 20),
+                visualDensity: VisualDensity.compact,
+                constraints: const BoxConstraints.tightFor(
+                  width: 36,
+                  height: 36,
+                ),
+                color: _ink.withAlpha(170),
+              ),
+            ),
+          if (isSelected) const Icon(Icons.check_circle, color: _coral),
+        ],
+      ),
     );
   }
 }
@@ -2276,6 +2591,64 @@ class _ImagePromptSheet extends StatelessWidget {
   }
 }
 
+class _WebSearchPromptSheet extends StatelessWidget {
+  const _WebSearchPromptSheet({
+    required this.controller,
+    required this.languageCode,
+  });
+
+  final TextEditingController controller;
+  final String languageCode;
+
+  @override
+  Widget build(BuildContext context) {
+    final bottomInset = MediaQuery.viewInsetsOf(context).bottom;
+
+    return Padding(
+      padding: EdgeInsets.fromLTRB(16, 16, 16, bottomInset + 16),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Row(
+            children: [
+              Text(
+                t(languageCode, 'webSearch'),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              const Spacer(),
+              IconButton(
+                onPressed: () => Navigator.of(context).pop(),
+                icon: const Icon(Icons.close),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          TextField(
+            controller: controller,
+            minLines: 3,
+            maxLines: 6,
+            autofocus: true,
+            decoration: InputDecoration(
+              labelText: t(languageCode, 'webSearchQuery'),
+              border: const OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(height: 16),
+          FilledButton.icon(
+            onPressed: () {
+              final query = controller.text.trim();
+              Navigator.of(context).pop(query);
+            },
+            icon: const Icon(Icons.public_rounded),
+            label: Text(t(languageCode, 'search')),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class _MessageComposer extends StatelessWidget {
   const _MessageComposer({
     required this.controller,
@@ -2338,6 +2711,13 @@ class _MessageComposer extends StatelessWidget {
                       child: ListTile(
                         leading: const Icon(Icons.image_outlined),
                         title: Text(t(languageCode, 'generateImageShort')),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: _ToolAction.webSearch,
+                      child: ListTile(
+                        leading: const Icon(Icons.public_rounded),
+                        title: Text(t(languageCode, 'webSearchShort')),
                       ),
                     ),
                     PopupMenuItem(
@@ -2429,9 +2809,17 @@ class _MessageComposer extends StatelessWidget {
 }
 
 class _MessageBubble extends StatelessWidget {
-  const _MessageBubble({required this.message});
+  const _MessageBubble({
+    required this.message,
+    required this.languageCode,
+    required this.onCopyResponse,
+    required this.onDownloadImage,
+  });
 
   final ChatMessage message;
+  final String languageCode;
+  final ValueChanged<ChatMessage> onCopyResponse;
+  final ValueChanged<ChatMessage> onDownloadImage;
 
   @override
   Widget build(BuildContext context) {
@@ -2485,16 +2873,455 @@ class _MessageBubble extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
               ],
-              Text(
-                message.content,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+              if (isUser)
+                Text(
+                  message.content,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: textColor,
+                    height: 1.42,
+                    letterSpacing: 0,
+                  ),
+                )
+              else
+                _AssistantResponseText(
+                  content: message.content,
                   color: textColor,
-                  height: 1.42,
-                  letterSpacing: 0,
+                ),
+              if (message.sources.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                _SourcesList(
+                  sources: message.sources,
+                  languageCode: languageCode,
+                ),
+              ],
+              if (!isUser) ...[
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _BubbleActionButton(
+                      icon: Icons.copy_rounded,
+                      tooltip: t(languageCode, 'copyResponse'),
+                      onPressed: () => onCopyResponse(message),
+                    ),
+                    if (message.imagePath != null) ...[
+                      const SizedBox(width: 6),
+                      _BubbleActionButton(
+                        icon: Icons.download_rounded,
+                        tooltip: t(languageCode, 'downloadImage'),
+                        onPressed: () => onDownloadImage(message),
+                      ),
+                    ],
+                  ],
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _AssistantResponseText extends StatelessWidget {
+  const _AssistantResponseText({required this.content, required this.color});
+
+  final String content;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    final baseStyle = Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: color,
+          height: 1.42,
+          letterSpacing: 0,
+        ) ??
+        TextStyle(color: color, height: 1.42);
+
+    final blocks = _MarkdownBlock.parse(content);
+    return SelectionArea(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final block in blocks) block.build(context, baseStyle),
+        ],
+      ),
+    );
+  }
+}
+
+class _SourcesList extends StatelessWidget {
+  const _SourcesList({required this.sources, required this.languageCode});
+
+  final List<WebSource> sources;
+  final String languageCode;
+
+  @override
+  Widget build(BuildContext context) {
+    final visibleSources = sources.take(8).toList();
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: _mist.withAlpha(150),
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: _cyan.withAlpha(70)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.public_rounded, size: 17, color: _coral),
+              const SizedBox(width: 7),
+              Text(
+                t(languageCode, 'sources'),
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: _ink,
                 ),
               ),
             ],
           ),
+          const SizedBox(height: 8),
+          for (var index = 0; index < visibleSources.length; index++)
+            _SourceTile(index: index + 1, source: visibleSources[index]),
+        ],
+      ),
+    );
+  }
+}
+
+class _SourceTile extends StatelessWidget {
+  const _SourceTile({required this.index, required this.source});
+
+  final int index;
+  final WebSource source;
+
+  Future<void> _open() async {
+    final uri = Uri.tryParse(source.url);
+    if (uri == null) {
+      return;
+    }
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final title = source.title.trim().isEmpty ? source.url : source.title;
+    final sourceName = source.source.trim();
+
+    return InkWell(
+      onTap: _open,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '$index.',
+              style: const TextStyle(
+                color: _coral,
+                fontWeight: FontWeight.w900,
+              ),
+            ),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: _ink,
+                      fontWeight: FontWeight.w800,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                  Text(
+                    sourceName.isEmpty ? source.url : sourceName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: _ink.withAlpha(165),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+sealed class _MarkdownBlock {
+  const _MarkdownBlock();
+
+  Widget build(BuildContext context, TextStyle baseStyle);
+
+  static List<_MarkdownBlock> parse(String content) {
+    final blocks = <_MarkdownBlock>[];
+    final lines = const LineSplitter().convert(content.replaceAll('\r\n', '\n'));
+    final paragraph = <String>[];
+    final code = <String>[];
+    var inCodeBlock = false;
+
+    void flushParagraph() {
+      if (paragraph.isEmpty) {
+        return;
+      }
+      blocks.add(_ParagraphBlock(paragraph.join(' ').trim()));
+      paragraph.clear();
+    }
+
+    void flushCode() {
+      blocks.add(_CodeBlock(code.join('\n').trimRight()));
+      code.clear();
+    }
+
+    for (final line in lines) {
+      final trimmed = line.trimRight();
+      final simple = trimmed.trimLeft();
+
+      if (simple.startsWith('```')) {
+        flushParagraph();
+        if (inCodeBlock) {
+          flushCode();
+        }
+        inCodeBlock = !inCodeBlock;
+        continue;
+      }
+
+      if (inCodeBlock) {
+        code.add(line);
+        continue;
+      }
+
+      if (simple.isEmpty) {
+        flushParagraph();
+        continue;
+      }
+
+      final headingMatch = RegExp(r'^(#{1,6})\s*(.+)$').firstMatch(simple);
+      if (headingMatch != null) {
+        flushParagraph();
+        blocks.add(
+          _HeadingBlock(
+            level: headingMatch.group(1)!.length,
+            text: headingMatch.group(2)!.trim(),
+          ),
+        );
+        continue;
+      }
+
+      final bulletMatch = RegExp(r'^[-*]\s+(.+)$').firstMatch(simple);
+      if (bulletMatch != null) {
+        flushParagraph();
+        blocks.add(_ListItemBlock(text: bulletMatch.group(1)!.trim()));
+        continue;
+      }
+
+      final numberMatch = RegExp(r'^\d+[.)]\s+(.+)$').firstMatch(simple);
+      if (numberMatch != null) {
+        flushParagraph();
+        blocks.add(_ListItemBlock(text: numberMatch.group(1)!.trim()));
+        continue;
+      }
+
+      paragraph.add(simple);
+    }
+
+    flushParagraph();
+    if (code.isNotEmpty) {
+      flushCode();
+    }
+    return blocks.isEmpty ? [_ParagraphBlock(content)] : blocks;
+  }
+}
+
+class _HeadingBlock extends _MarkdownBlock {
+  const _HeadingBlock({required this.level, required this.text});
+
+  final int level;
+  final String text;
+
+  @override
+  Widget build(BuildContext context, TextStyle baseStyle) {
+    final size = switch (level) {
+      1 => 22.0,
+      2 => 19.0,
+      3 => 17.0,
+      _ => 15.5,
+    };
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 8, bottom: 5),
+      child: Text.rich(
+        TextSpan(
+          children: _inlineSpans(text, baseStyle.copyWith(fontSize: size)),
+        ),
+        style: baseStyle.copyWith(
+          fontSize: size,
+          fontWeight: FontWeight.w900,
+          height: 1.18,
+        ),
+      ),
+    );
+  }
+}
+
+class _ParagraphBlock extends _MarkdownBlock {
+  const _ParagraphBlock(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context, TextStyle baseStyle) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child: Text.rich(
+        TextSpan(children: _inlineSpans(text, baseStyle)),
+        style: baseStyle,
+      ),
+    );
+  }
+}
+
+class _ListItemBlock extends _MarkdownBlock {
+  const _ListItemBlock({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context, TextStyle baseStyle) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Container(
+              width: 5,
+              height: 5,
+              decoration: BoxDecoration(
+                color: _coral.withAlpha(210),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text.rich(
+              TextSpan(children: _inlineSpans(text, baseStyle)),
+              style: baseStyle,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CodeBlock extends _MarkdownBlock {
+  const _CodeBlock(this.text);
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context, TextStyle baseStyle) {
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: 4, bottom: 10),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: _ink,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: _ink.withAlpha(30)),
+      ),
+      child: Text(
+        text,
+        style: baseStyle.copyWith(
+          color: Colors.white,
+          fontFamily: 'monospace',
+          fontSize: 13,
+          height: 1.35,
+        ),
+      ),
+    );
+  }
+}
+
+List<InlineSpan> _inlineSpans(String text, TextStyle baseStyle) {
+  final spans = <InlineSpan>[];
+  var index = 0;
+  final pattern = RegExp(r'(\*\*[^*]+\*\*|`[^`]+`)');
+
+  for (final match in pattern.allMatches(text)) {
+    if (match.start > index) {
+      spans.add(TextSpan(text: text.substring(index, match.start)));
+    }
+
+    final token = match.group(0)!;
+    if (token.startsWith('**')) {
+      spans.add(
+        TextSpan(
+          text: token.substring(2, token.length - 2),
+          style: baseStyle.copyWith(fontWeight: FontWeight.w800),
+        ),
+      );
+    } else {
+      spans.add(
+        TextSpan(
+          text: token.substring(1, token.length - 1),
+          style: baseStyle.copyWith(
+            fontFamily: 'monospace',
+            fontSize: (baseStyle.fontSize ?? 16) - 1,
+            backgroundColor: _mist,
+          ),
+        ),
+      );
+    }
+    index = match.end;
+  }
+
+  if (index < text.length) {
+    spans.add(TextSpan(text: text.substring(index)));
+  }
+
+  return spans.isEmpty ? [TextSpan(text: text)] : spans;
+}
+
+class _BubbleActionButton extends StatelessWidget {
+  const _BubbleActionButton({
+    required this.icon,
+    required this.tooltip,
+    required this.onPressed,
+  });
+
+  final IconData icon;
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: tooltip,
+      child: IconButton(
+        onPressed: onPressed,
+        icon: Icon(icon, size: 18),
+        visualDensity: VisualDensity.compact,
+        constraints: const BoxConstraints.tightFor(width: 34, height: 34),
+        style: IconButton.styleFrom(
+          foregroundColor: _ink.withAlpha(190),
+          backgroundColor: _mist,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
     );
@@ -2825,6 +3652,38 @@ class MistralClient {
     );
   }
 
+  Future<WebSearchResult> webSearch({
+    required String apiKey,
+    required String model,
+    required String query,
+    required String languageCode,
+  }) async {
+    final decoded = await _postJson(
+      apiKey: apiKey,
+      url: _conversationsEndpoint,
+      body: {
+        'model': model,
+        'store': false,
+        'instructions':
+            'Answer in language code "$languageCode". Use web search for current or factual information. Be concise, cite facts with the provided web references, and do not invent sources.',
+        'tools': [
+          {'type': 'web_search'},
+        ],
+        'inputs': query,
+      },
+    );
+
+    final text = _collectResponseText(decoded);
+    if (text.isEmpty) {
+      throw const MistralException('Reponse web invalide.');
+    }
+
+    return WebSearchResult(
+      text: text,
+      sources: _extractWebSources(decoded),
+    );
+  }
+
   Future<String> ocrFile({
     required String apiKey,
     required String path,
@@ -3068,6 +3927,51 @@ class MistralClient {
 
     visit(value);
     return parts.join('\n').trim();
+  }
+
+  List<WebSource> _extractWebSources(Object? value) {
+    final sources = <WebSource>[];
+    final seenUrls = <String>{};
+
+    void addSource(Map<String, dynamic> map) {
+      final url = map['url'];
+      if (url is! String || url.trim().isEmpty) {
+        return;
+      }
+
+      final normalizedUrl = url.trim();
+      if (!seenUrls.add(normalizedUrl)) {
+        return;
+      }
+
+      sources.add(
+        WebSource(
+          title: map['title'] as String? ?? normalizedUrl,
+          url: normalizedUrl,
+          source: map['source'] as String? ?? '',
+        ),
+      );
+    }
+
+    void visit(Object? current) {
+      if (current is Map<String, dynamic>) {
+        final type = current['type'];
+        final tool = current['tool'];
+        if (type == 'tool_reference' || tool == 'web_search') {
+          addSource(current);
+        }
+        for (final child in current.values) {
+          visit(child);
+        }
+      } else if (current is List) {
+        for (final child in current) {
+          visit(child);
+        }
+      }
+    }
+
+    visit(value);
+    return sources;
   }
 
   String _extractApiError(Map<String, dynamic> decoded) {
@@ -3401,6 +4305,37 @@ class GeneratedImage {
   final String fileId;
 }
 
+class WebSearchResult {
+  const WebSearchResult({required this.text, required this.sources});
+
+  final String text;
+  final List<WebSource> sources;
+}
+
+class WebSource {
+  const WebSource({
+    required this.title,
+    required this.url,
+    required this.source,
+  });
+
+  factory WebSource.fromJson(Map<String, dynamic> json) {
+    return WebSource(
+      title: json['title'] as String? ?? '',
+      url: json['url'] as String? ?? '',
+      source: json['source'] as String? ?? '',
+    );
+  }
+
+  final String title;
+  final String url;
+  final String source;
+
+  Map<String, String> toJson() {
+    return {'title': title, 'url': url, 'source': source};
+  }
+}
+
 class MistralModel {
   const MistralModel({required this.id, required this.name});
 
@@ -3435,25 +4370,38 @@ class ChatMessage {
     required this.role,
     required this.content,
     this.imagePath,
+    this.sources = const [],
   });
 
   factory ChatMessage.fromJson(Map<String, dynamic> json) {
+    final rawSources = json['sources'];
     return ChatMessage(
       role: ChatRole.fromApiName(json['role'] as String? ?? 'assistant'),
       content: json['content'] as String? ?? '',
       imagePath: json['imagePath'] as String?,
+      sources: rawSources is List
+          ? rawSources
+                .whereType<Map<String, dynamic>>()
+                .map(WebSource.fromJson)
+                .where((source) => source.url.trim().isNotEmpty)
+                .toList()
+          : const [],
     );
   }
 
   final ChatRole role;
   final String content;
   final String? imagePath;
+  final List<WebSource> sources;
 
-  Map<String, String> toJson() {
-    final json = {'role': role.apiName, 'content': content};
+  Map<String, Object?> toJson() {
+    final json = <String, Object?>{'role': role.apiName, 'content': content};
     final imagePath = this.imagePath;
     if (imagePath != null) {
       json['imagePath'] = imagePath;
+    }
+    if (sources.isNotEmpty) {
+      json['sources'] = sources.map((source) => source.toJson()).toList();
     }
     return json;
   }
@@ -3526,6 +4474,6 @@ enum ChatRole {
 
 enum _LocalAction { clearAll }
 
-enum _ToolAction { image, ocr, audio }
+enum _ToolAction { image, webSearch, ocr, audio }
 
 enum _AppSection { chat, library, tools }

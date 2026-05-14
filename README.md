@@ -29,6 +29,7 @@ Le projet vise une application simple a installer, sans backend personnel ajoute
 ## Fonctionnalites
 
 - Chat avec les modeles Mistral.
+- Copie des reponses IA comme dans ChatGPT.
 - Recuperation de la liste des modeles depuis `GET /v1/models`.
 - Selection du modele depuis les parametres.
 - Sauvegarde locale securisee de la cle API.
@@ -36,7 +37,9 @@ Le projet vise une application simple a installer, sans backend personnel ajoute
 - Historique local des conversations.
 - Memoire adaptative locale, mise a jour automatiquement avec Mistral.
 - Dictee vocale Android.
+- Recherche web avec affichage des sources.
 - Generation d'images via les outils Mistral.
+- Telechargement des images generees.
 - OCR de PDF, images et fichiers compatibles.
 - Transcription audio avec Voxtral.
 - Choix de langue dans les parametres.
